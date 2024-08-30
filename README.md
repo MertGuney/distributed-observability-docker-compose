@@ -15,7 +15,7 @@ It is aimed build a distributed system for storing log, trace and metric data.
 - Grafana
 
   
-## Dağıtım
+## Deploy
 
 Run this project to deploy it
 
