@@ -6,6 +6,8 @@ It is aimed build a distributed system for storing log, trace and metric data.
 ## Technologies Used
 
 - OpenTelemetry Collector
+- Kafka
+- Zookeper
 - Elasticsearch
 - Logstash
 - Kibana
