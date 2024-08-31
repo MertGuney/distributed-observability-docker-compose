@@ -41,7 +41,6 @@ services:
     restart: on-failure
     ports:
       - "9200:9200"
-    restart: on-failure
     environment:
       - node.name=elasticsearch
       - discovery.type=single-node
@@ -99,6 +98,8 @@ services:
     environment:
       - SPAN_STORAGE_TYPE=elasticsearch
       - ES_SERVER_URLS=http://elasticsearch:9200
+      - METRICS_STORAGE_TYPE=prometheus
+      - PROMETHEUS_SERVER_URL=http://prometheus:9090
     networks:
       - elk
     depends_on:
@@ -116,6 +117,8 @@ services:
     environment:
       - SPAN_STORAGE_TYPE=elasticsearch
       - ES_SERVER_URLS=http://elasticsearch:9200
+      - METRICS_STORAGE_TYPE=prometheus
+      - PROMETHEUS_SERVER_URL=http://prometheus:9090
     networks:
       - elk
     depends_on:
