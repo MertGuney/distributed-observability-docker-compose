@@ -154,7 +154,12 @@ services:
     ports:
       - "9090:9090"
     volumes:
+      - prometheus_data:/prometheus
       - ./prometheus.yaml:/etc/prometheus/prometheus.yaml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     networks:
       - elk
     depends_on:
@@ -166,8 +171,13 @@ services:
     restart: on-failure
     ports:
       - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=guest
+      - GF_SECURITY_ADMIN_PASSWORD=guest
     networks:
       - elk
     depends_on:
@@ -178,4 +188,6 @@ networks:
     driver: bridge
 
 volumes:
+  grafana_data:
+  prometheus_data:
   elasticsearch_data:

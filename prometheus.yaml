@@ -17,3 +17,9 @@ scrape_configs:
   - job_name: 'elasticsearch'
     static_configs:
       - targets: ['elasticsearch:9200']
+  
+  - job_name: 'monitoring'
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets: ['monitoring:8080']
